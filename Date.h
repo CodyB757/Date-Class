@@ -1,5 +1,6 @@
 #ifndef DATE_H
 #define DATE_H
+
 #include <string>
 
 using namespace std;
@@ -33,5 +34,4 @@ public:
 };
 
 #endif
-
 
