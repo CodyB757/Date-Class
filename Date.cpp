@@ -3,37 +3,31 @@
 
 using namespace std;
 
-bool Date::isLeapYear() const {
-    return isLeapYear(year);
+Date::Date(int m, int d, int y) {
+    setDate(m, d, y);
 }
 
-bool Date::isLeapYear(int y) const {
-    return (y % 4 == 0 && y % 100 != 0) || (y % 400 == 0);
+void Date::setDate(int m, int d, int y) {
+    if (isValidDate(m, d, y)) {
+        month = m;
+        day = d;
+        year = y;
+    }
+    else {
+        month = 1;
+        day = 1;
+        year = 1900;
+    }
 }
 
-int Date::lastDay() const {
-    return lastDay(month, year);
+int Date::getMonth() const {
+    return month;
 }
 
-int Date::lastDay(int m, int y) const {
-    if (m < 1 || m > 12) {
-        return 0;
-    }
-    if (m == 1 || m == 3 || m == 5 || m == 7 || m == 8 || m == 10 || m == 12) {
-        return 31;
-    }
-    if (m == 4 || m == 6 || m == 9 || m == 11) {
-        return 30;
-    }
-    if (m == 2) {
-        return isLeapYear(y) ? 29 : 28;
-    }
-    return 0;
+int Date::getDay() const {
+    return day;
 }
 
-bool Date::isValidDate(int m, int d, int y) const {
-    if (y < 1 || m < 1 || m > 12) {
-        return false;
-    }
-    return d >= 1 && d <= lastDay(m, y);
+int Date::getYear() const {
+    return year;
 }
