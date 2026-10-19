@@ -20,14 +20,19 @@ void Date::setDate(int m, int d, int y) {
     }
 }
 
-int Date::getMonth() const {
-    return month;
+static const string MONTH_NAMES[] = {
+    "", "January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December"
+};
+
+string Date::formatNumeric() const {
+    return to_string(month) + "/" + to_string(day) + "/" + to_string(year);
 }
 
-int Date::getDay() const {
-    return day;
+string Date::formatLong() const {
+    return MONTH_NAMES[month] + " " + to_string(day) + ", " + to_string(year);
 }
 
-int Date::getYear() const {
-    return year;
+string Date::formatDayFirst() const {
+    return to_string(day) + " " + MONTH_NAMES[month] + " " + to_string(year);
 }
